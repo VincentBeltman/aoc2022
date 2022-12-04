@@ -121,15 +121,15 @@
 			isa = PBXGroup;
 			children = (
 				1B881C342937D4D100C4A85A /* Common */,
-				1B881C332937D4B800C4A85A /* Day1 */,
-				1B881C322937D4B300C4A85A /* Day2 */,
-				1B881C312937D4AF00C4A85A /* Day3 */,
-				1B881C302937D4AA00C4A85A /* Day4 */,
-				1B881C2F2937D4A500C4A85A /* Day5 */,
-				1B881C2E2937D4A000C4A85A /* Day6 */,
-				1B881C2D2937D49C00C4A85A /* Day7 */,
-				1B881C2C2937D49800C4A85A /* Day8 */,
-				1B881C2A2937D48900C4A85A /* Day9 */,
+				1B881C332937D4B800C4A85A /* Day01 */,
+				1B881C322937D4B300C4A85A /* Day02 */,
+				1B881C312937D4AF00C4A85A /* Day03 */,
+				1B881C302937D4AA00C4A85A /* Day04 */,
+				1B881C2F2937D4A500C4A85A /* Day05 */,
+				1B881C2E2937D4A000C4A85A /* Day06 */,
+				1B881C2D2937D49C00C4A85A /* Day07 */,
+				1B881C2C2937D49800C4A85A /* Day08 */,
+				1B881C2A2937D48900C4A85A /* Day09 */,
 				1B881C292937D48400C4A85A /* Day10 */,
 				1B881C282937D47B00C4A85A /* Day11 */,
 				1B881C272937D47700C4A85A /* Day12 */,
@@ -279,76 +279,76 @@
 			path = Day10;
 			sourceTree = "<group>";
 		};
-		1B881C2A2937D48900C4A85A /* Day9 */ = {
+		1B881C2A2937D48900C4A85A /* Day09 */ = {
 			isa = PBXGroup;
 			children = (
 				1B881C492937D7C800C4A85A /* Day9Runner.swift */,
 			);
-			path = Day9;
+			path = Day09;
 			sourceTree = "<group>";
 		};
-		1B881C2C2937D49800C4A85A /* Day8 */ = {
+		1B881C2C2937D49800C4A85A /* Day08 */ = {
 			isa = PBXGroup;
 			children = (
 				1B881C472937D7C400C4A85A /* Day8Runner.swift */,
 			);
-			path = Day8;
+			path = Day08;
 			sourceTree = "<group>";
 		};
-		1B881C2D2937D49C00C4A85A /* Day7 */ = {
+		1B881C2D2937D49C00C4A85A /* Day07 */ = {
 			isa = PBXGroup;
 			children = (
 				1B881C452937D7C100C4A85A /* Day7Runner.swift */,
 			);
-			path = Day7;
+			path = Day07;
 			sourceTree = "<group>";
 		};
-		1B881C2E2937D4A000C4A85A /* Day6 */ = {
+		1B881C2E2937D4A000C4A85A /* Day06 */ = {
 			isa = PBXGroup;
 			children = (
 				1B881C432937D7BC00C4A85A /* Day6Runner.swift */,
 			);
-			path = Day6;
+			path = Day06;
 			sourceTree = "<group>";
 		};
-		1B881C2F2937D4A500C4A85A /* Day5 */ = {
+		1B881C2F2937D4A500C4A85A /* Day05 */ = {
 			isa = PBXGroup;
 			children = (
 				1B881C412937D7B600C4A85A /* Day5Runner.swift */,
 			);
-			path = Day5;
+			path = Day05;
 			sourceTree = "<group>";
 		};
-		1B881C302937D4AA00C4A85A /* Day4 */ = {
+		1B881C302937D4AA00C4A85A /* Day04 */ = {
 			isa = PBXGroup;
 			children = (
 				1B881C3F2937D7B000C4A85A /* Day4Runner.swift */,
 			);
-			path = Day4;
+			path = Day04;
 			sourceTree = "<group>";
 		};
-		1B881C312937D4AF00C4A85A /* Day3 */ = {
+		1B881C312937D4AF00C4A85A /* Day03 */ = {
 			isa = PBXGroup;
 			children = (
 				1B881C3D2937D78F00C4A85A /* Day3Runner.swift */,
 			);
-			path = Day3;
+			path = Day03;
 			sourceTree = "<group>";
 		};
-		1B881C322937D4B300C4A85A /* Day2 */ = {
+		1B881C322937D4B300C4A85A /* Day02 */ = {
 			isa = PBXGroup;
 			children = (
 				1B881C3B2937D77100C4A85A /* Day2Runner.swift */,
 			);
-			path = Day2;
+			path = Day02;
 			sourceTree = "<group>";
 		};
-		1B881C332937D4B800C4A85A /* Day1 */ = {
+		1B881C332937D4B800C4A85A /* Day01 */ = {
 			isa = PBXGroup;
 			children = (
 				1B881C392937D54F00C4A85A /* Day1Runner.swift */,
 			);
-			path = Day1;
+			path = Day01;
 			sourceTree = "<group>";
 		};
 		1B881C342937D4D100C4A85A /* Common */ = {
