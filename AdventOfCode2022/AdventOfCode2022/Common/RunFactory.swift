@@ -7,7 +7,7 @@
 
 import Foundation
 
-let day: Int = 5
+let day: Int = 6
 
 func CreateRunner() -> any Runable
 {
