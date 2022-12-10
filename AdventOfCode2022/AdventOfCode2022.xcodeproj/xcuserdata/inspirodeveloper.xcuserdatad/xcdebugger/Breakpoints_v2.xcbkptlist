@@ -14,10 +14,10 @@
             filePath = "AdventOfCode2022/Day09/Day9Runner.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "doStep(numberOfSteps:direction:)"
-            landmarkType = "9">
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "RunPart2(input:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -23,14 +23,6 @@ class Day9Runner: Runable
       return Coord(x: x - other.x, y: y - other.y)
     }
   }
-  func compareTo0(_ number: Int) -> Int
-  {
-    if number >= 1
-    {
-      return 1
-    }
-    return number <= -1 ? -1 : 0
-  }
   func RunPart1(input: Input) -> String
   {
     let steps: [[Substring]] = input.exploded(separators: ["\n", " "])
@@ -45,7 +37,7 @@ class Day9Runner: Runable
       {
         head.add(direction)
         let diff: Coord = head.diff(tail)
-        tail.add(diff.x > 1 || diff.x < -1 || diff.y > 1 || diff.y < -1 ? Coord(x: compareTo0(diff.x), y: compareTo0(diff.y)) : Coord(x: 0, y: 0))
+        tail.add(diff.x > 1 || diff.x < -1 || diff.y > 1 || diff.y < -1 ? Coord(x: diff.x.signum(), y: diff.y.signum()) : Coord(x: 0, y: 0))
         visited.insert(tail)
       }
     }
@@ -85,7 +77,7 @@ class Day9Runner: Runable
         {
           rope[i].add(nextDirection)
           let diff: Coord = rope[i].diff(rope[i+1])
-          nextDirection = diff.x > 1 || diff.x < -1 || diff.y > 1 || diff.y < -1 ? Coord(x: compareTo0(diff.x), y: compareTo0(diff.y)) : Coord(x: 0, y: 0)
+          nextDirection = diff.x > 1 || diff.x < -1 || diff.y > 1 || diff.y < -1 ? Coord(x: diff.x.signum(), y: diff.y.signum()) : Coord(x: 0, y: 0)
         }
         rope[9].add(nextDirection)
         visited.insert(rope[9])
