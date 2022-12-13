@@ -12,7 +12,7 @@ typealias IntField = Field<Int>
 
 class Field<T: Comparable>: CustomStringConvertible
 {
-  class Coord: Equatable
+  class Coord: Equatable, Hashable, CustomStringConvertible
   {
     var y: Int
     var x: Int
@@ -23,9 +23,19 @@ class Field<T: Comparable>: CustomStringConvertible
       self.x = x
     }
 
+    var description: String {
+      "(\(x), \(y))"
+    }
+
     func isIn(field: Field) -> Bool
     {
       return ((y >= 0) && (x >= 0) && (y < field.height) && (x < field.width))
+    }
+
+    func hash(into hasher: inout Hasher)
+    {
+      hasher.combine(x)
+      hasher.combine(y)
     }
 
     static func == (lhs: Coord, rhs: Coord) -> Bool
@@ -295,5 +305,55 @@ extension Field: Sequence
   func makeIterator() -> Iterator
   {
     return Iterator(self)
+  }
+}
+
+// Dijkstra
+extension Field
+{
+  private struct DijkstraDistance
+  {
+    let distance: Int
+    let origin: Coord?
+  }
+
+  func dijkstra(start: Coord, isEnd: (Coord) -> Bool, isValidNeighbour: (Coord, Coord) -> Bool) -> [Coord]
+  {
+    var toVisit: [Coord: DijkstraDistance] = [:]
+    var visited: [Coord: DijkstraDistance] = [:]
+    toVisit[start] = DijkstraDistance(distance: 0, origin: nil)
+    while !toVisit.isEmpty
+    {
+      let (currentCoord, currentDistance) = toVisit.min(by: { $0.value.distance < $1.value.distance })!
+      toVisit.removeValue(forKey: currentCoord)
+      visited[currentCoord] = currentDistance
+      if isEnd(currentCoord)
+      {
+        var shortestPath: [Coord] = []
+        var current: Coord? = currentCoord
+        while current != nil
+        {
+          shortestPath.insert(current!, at: 0)
+          current = visited[current!]!.origin
+        }
+        return shortestPath
+      }
+      for neighbour: Coord in getNeighbours(of: currentCoord)
+      {
+        guard let _ = getValue(at: neighbour) else
+        { continue }
+        guard visited[neighbour] == nil else
+        { continue }
+        guard isValidNeighbour(currentCoord, neighbour) else
+        { continue}
+        toVisit[neighbour] = DijkstraDistance(distance: currentDistance.distance + 1, origin: currentCoord)
+        // TODO: Needed?
+        if visited[neighbour] != nil
+        {
+          visited[neighbour] = toVisit[neighbour]
+        }
+      }
+    }
+    fatalError()
   }
 }

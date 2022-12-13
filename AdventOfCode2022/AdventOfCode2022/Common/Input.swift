@@ -9,9 +9,16 @@ import Foundation
 
 class Input
 {
+  let input: String
+
+  init(input: String? = nil)
+  {
+    self.input = input ?? DayInput.input
+  }
+
   func string() -> String
   {
-    return DayInput.input
+    return input
   }
 
   func exploded<R>(separators: [String]) -> R
@@ -44,7 +51,7 @@ class Input
 
     let separator: String = separators.first!
     let newSeparators: [String] = separators.dropFirst().map({String($0)})
-    let results: [Substring] = (DayInput.input).split(separator: separator)
+    let results: [Substring] = (input).split(separator: separator)
     if !newSeparators.isEmpty
     {
       return explodeList(list: results, separators: newSeparators) as! R
