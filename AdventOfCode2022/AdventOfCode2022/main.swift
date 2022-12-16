@@ -7,7 +7,6 @@
 
 import Foundation
 let runner = CreateRunner()
-
 let start1 = DispatchTime.now()
 print("Part 1:", runner.RunPart1(input: Input()))
 let end1 = DispatchTime.now()

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B2EF985294C3C500080F39A /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2EF984294C3C500080F39A /* Graph.swift */; };
 		1B50C8FC2937DF090044625D /* RunFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B881C352937D4E200C4A85A /* RunFactory.swift */; };
 		1B5E10D1293CAA03000AF9E7 /* Collection+CountWhere.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E10D0293CAA03000AF9E7 /* Collection+CountWhere.swift */; };
 		1B881C112937D3C900C4A85A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B881C102937D3C900C4A85A /* main.swift */; };
@@ -55,6 +56,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1B2EF984294C3C500080F39A /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
 		1B5E10D0293CAA03000AF9E7 /* Collection+CountWhere.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+CountWhere.swift"; sourceTree = "<group>"; };
 		1B881C0D2937D3C900C4A85A /* AdventOfCode2022 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AdventOfCode2022; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B881C102937D3C900C4A85A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 				1B881C6D2937DAB500C4A85A /* Input.swift */,
 				1B5E10D0293CAA03000AF9E7 /* Collection+CountWhere.swift */,
 				1BE9FE592943ED6A000DB144 /* Field.swift */,
+				1B2EF984294C3C500080F39A /* Graph.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -392,7 +395,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1410;
-				LastUpgradeCheck = 1410;
+				LastUpgradeCheck = 1420;
 				TargetAttributes = {
 					1B881C0C2937D3C900C4A85A = {
 						CreatedOnToolsVersion = 14.1;
@@ -440,6 +443,7 @@
 				1B881C5A2937D7E400C4A85A /* Day17Runner.swift in Sources */,
 				1B881C622937D7F200C4A85A /* Day21Runner.swift in Sources */,
 				1B5E10D1293CAA03000AF9E7 /* Collection+CountWhere.swift in Sources */,
+				1B2EF985294C3C500080F39A /* Graph.swift in Sources */,
 				1B881C442937D7BC00C4A85A /* Day6Runner.swift in Sources */,
 				1B50C8FC2937DF090044625D /* RunFactory.swift in Sources */,
 				1B881C5C2937D7E800C4A85A /* Day18Runner.swift in Sources */,
@@ -493,6 +497,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -553,6 +558,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -576,7 +582,9 @@
 		1B881C152937D3C900C4A85A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 8ZL398KFXR;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -587,7 +595,9 @@
 		1B881C162937D3C900C4A85A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 8ZL398KFXR;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
