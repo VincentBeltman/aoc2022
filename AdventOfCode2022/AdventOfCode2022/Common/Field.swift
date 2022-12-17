@@ -12,43 +12,6 @@ typealias IntField = Field<Int>
 
 class Field<T: Comparable>: CustomStringConvertible
 {
-  class Coord: Equatable, Hashable, CustomStringConvertible
-  {
-    var y: Int
-    var x: Int
-
-    init(y: Int, x: Int)
-    {
-      self.y = y
-      self.x = x
-    }
-
-    var description: String {
-      "(\(x), \(y))"
-    }
-
-    func isIn(field: Field) -> Bool
-    {
-      return ((y >= 0) && (x >= 0) && (y < field.height) && (x < field.width))
-    }
-
-    func hash(into hasher: inout Hasher)
-    {
-      hasher.combine(x)
-      hasher.combine(y)
-    }
-
-    static func == (lhs: Coord, rhs: Coord) -> Bool
-    {
-      return lhs.x == rhs.x && lhs.y == rhs.y
-    }
-
-    static func != (lhs: Coord, rhs: Coord) -> Bool
-    {
-      return lhs.x != rhs.x || lhs.y != rhs.y
-    }
-  }
-
   class CoordRange
   {
     let start: Coord
@@ -168,7 +131,7 @@ class Field<T: Comparable>: CustomStringConvertible
            (abs(range.start.x - range.end.x) == abs(range.start.y - range.end.y)),
            "horizontal, vertical, and 45 degrees diagonal supported only")
 
-    let currentCoord: Coord = range.start
+    var currentCoord: Coord = range.start
     alterationMethod(value, currentCoord)
 
     while currentCoord != range.end
@@ -201,31 +164,31 @@ class Field<T: Comparable>: CustomStringConvertible
 
     if diagonalsEnabled
     {
-      neighbours.append(Coord(y: coord.y-1, x: coord.x-1))
-      neighbours.append(Coord(y: coord.y-1, x: coord.x))
-      neighbours.append(Coord(y: coord.y-1, x: coord.x+1))
+      neighbours.append(Coord(x: coord.x-1, y: coord.y-1))
+      neighbours.append(Coord(x: coord.x, y: coord.y-1))
+      neighbours.append(Coord(x: coord.x+1, y: coord.y-1))
 
-      neighbours.append(Coord(y: coord.y, x: coord.x-1))
+      neighbours.append(Coord(x: coord.x-1, y: coord.y))
       if includingSelf
       {
-        neighbours.append(Coord(y: coord.y, x: coord.x))
+        neighbours.append(Coord(x: coord.x, y: coord.y))
       }
-      neighbours.append(Coord(y: coord.y, x: coord.x+1))
+      neighbours.append(Coord(x: coord.x+1, y: coord.y))
 
-      neighbours.append(Coord(y: coord.y+1, x: coord.x-1))
-      neighbours.append(Coord(y: coord.y+1, x: coord.x))
-      neighbours.append(Coord(y: coord.y+1, x: coord.x+1))
+      neighbours.append(Coord(x: coord.x-1, y: coord.y+1))
+      neighbours.append(Coord(x: coord.x, y: coord.y+1))
+      neighbours.append(Coord(x: coord.x+1, y: coord.y+1))
     }
     else
     {
-      neighbours.append(Coord(y: coord.y-1, x: coord.x))
-      neighbours.append(Coord(y: coord.y, x: coord.x-1))
+      neighbours.append(Coord(x: coord.x, y: coord.y-1))
+      neighbours.append(Coord(x: coord.x-1, y: coord.y))
       if includingSelf
       {
-        neighbours.append(Coord(y: coord.y, x: coord.x))
+        neighbours.append(Coord(x: coord.x, y: coord.y))
       }
-      neighbours.append(Coord(y: coord.y+1, x: coord.x))
-      neighbours.append(Coord(y: coord.y, x: coord.x+1))
+      neighbours.append(Coord(x: coord.x, y: coord.y+1))
+      neighbours.append(Coord(x: coord.x+1, y: coord.y))
     }
 
     return neighbours
@@ -254,7 +217,7 @@ class Field<T: Comparable>: CustomStringConvertible
       field.insert([T](repeating: defaultValue, count: height), at: 0)
     }
     // Right + bottom
-    resize(to: Coord(y: height, x: width))
+    resize(to: Coord(x: width, y: height))
   }
 }
 
@@ -280,17 +243,17 @@ extension Field: Sequence
   struct Iterator: IteratorProtocol
   {
     let field: Field
-    let coord: Coord
+    var coord: Coord
 
     init(_ field: Field)
     {
       self.field = field
-      self.coord = Coord(y: 0, x: 0)
+      self.coord = Coord(x: 0, y: 0)
     }
 
     mutating func next() -> Coord?
     {
-      let next: Coord = Coord(y: coord.y, x: coord.x)
+      let next: Coord = Coord(x: coord.x, y: coord.y)
       coord.x += 1
       if field.width == coord.x
       {

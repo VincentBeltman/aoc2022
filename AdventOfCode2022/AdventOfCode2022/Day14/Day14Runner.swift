@@ -9,23 +9,23 @@ import Foundation
 
 class Day14Runner: Runable
 {
-  func getNeighbours(of coord: StringField.Coord) -> [StringField.Coord]
+  func getNeighbours(of coord: Coord) -> [Coord]
   {
     return [
-      StringField.Coord(y: coord.y+1, x: coord.x), // Down
-      StringField.Coord(y: coord.y+1, x: coord.x-1), // Left down diag
-      StringField.Coord(y: coord.y+1, x: coord.x+1)] // Right down diag
+      Coord(x: coord.x, y: coord.y+1), // Down
+      Coord(x: coord.x-1, y: coord.y+1), // Left down diag
+      Coord(x: coord.x+1, y: coord.y+1)] // Right down diag
   }
-  func dropAllSand(field: StringField, sandOriginCoord: StringField.Coord) -> Int
+  func dropAllSand(field: StringField, sandOriginCoord: Coord) -> Int
   {
     var nrOfSand: Int = 0
     while true
     {
-      var currentSandCoord: StringField.Coord = sandOriginCoord
+      var currentSandCoord: Coord = sandOriginCoord
       while true
       {
         var moved: Bool = false
-        for neighbour: StringField.Coord in getNeighbours(of: currentSandCoord) where neighbour.y > currentSandCoord.y
+        for neighbour: Coord in getNeighbours(of: currentSandCoord) where neighbour.y > currentSandCoord.y
         {
           if let value: String = field.getValue(at: neighbour)
           {
@@ -72,7 +72,7 @@ class Day14Runner: Runable
       assert(line.count > 1)
       for i in 1..<line.count
       {
-        let (firstCoord, SecondCoord) = (StringField.Coord(y: line[i-1][1], x: line[i-1][0]), StringField.Coord(y: line[i][1], x: line[i][0]))
+        let (firstCoord, SecondCoord) = (Coord(x: line[i-1][0], y: line[i-1][1]), Coord(x: line[i][0], y: line[i][1]))
         field.setRange("#", atRange: StringField.CoordRange(start: firstCoord, end: SecondCoord))
       }
     }
@@ -80,7 +80,7 @@ class Day14Runner: Runable
   }
   func RunPart1(input: Input) -> String
   {
-    return "\(dropAllSand(field: parseInput(input), sandOriginCoord: StringField.Coord(y: 0, x: 500)))"
+    return "\(dropAllSand(field: parseInput(input), sandOriginCoord: Coord(x: 500, y: 0)))"
   }
 
   func RunPart2(input: Input) -> String
@@ -88,8 +88,8 @@ class Day14Runner: Runable
     let field: StringField = parseInput(input)
     let maxY: Int = field.max(by: { $0.y < $1.y })!.y
     field.setRange("#", atRange: StringField.CoordRange(
-      start: StringField.Coord(y: maxY+2, x: 0),
-      end: StringField.Coord(y: maxY+2, x: 1000)))
-    return "\(dropAllSand(field: field, sandOriginCoord: StringField.Coord(y: 0, x: 500)))"
+      start: Coord(x: 0, y: maxY+2),
+      end: Coord(x: 1000, y: maxY+2)))
+    return "\(dropAllSand(field: field, sandOriginCoord: Coord(x: 500, y: 0)))"
   }
 }

@@ -57,11 +57,11 @@ class Day16Runner: Runable
       if let valveMatch = line[0].wholeMatch(of: /Valve (.*) has flow rate=(\d+)/),
         let tunnelsMatch = line[1].wholeMatch(of: /tunnels? leads? to valves? (.*)/)
       {
-        var valveId: Int = valveMap.firstIndex(of: valveMatch.1) ?? valveMap.count
+        let valveId: Int = valveMap.firstIndex(of: valveMatch.1) ?? valveMap.count
         if valveId == valveMap.count { valveMap.append(valveMatch.1) }
         graph[valveId] = (Int(valveMatch.2)!, tunnelsMatch.1.split(separator: ", ").map()
           { tunnel in
-            var index: Int = valveMap.firstIndex(of: tunnel) ?? valveMap.count
+            let index: Int = valveMap.firstIndex(of: tunnel) ?? valveMap.count
             if index == valveMap.count { valveMap.append(tunnel) }
             return index
           })
