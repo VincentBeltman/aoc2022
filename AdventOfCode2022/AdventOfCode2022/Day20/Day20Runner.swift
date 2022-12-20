@@ -27,9 +27,9 @@ class Day20Runner: Runable
       return self
     }
   }
-  func parseNodes(input: Input) -> [Node]
+  func parseNodes(input: Input, multiplier: Int = 1) -> [Node]
   {
-    var numbers: [Int] = input.exploded(separators: ["\n"], transform: { Int($0)! })
+    var numbers: [Int] = input.exploded(separators: ["\n"], transform: { Int($0)!*multiplier })
     var lastNode: Node = Node(left: nil, right: nil, number: numbers.removeFirst())
     var nodes: [Node] = [lastNode]
     nodes.append(contentsOf: numbers.map({
@@ -72,7 +72,7 @@ class Day20Runner: Runable
 
   func RunPart2(input: Input) -> String
   {
-    var nodes: [Node] = parseNodes(input: input)
+    var nodes: [Node] = parseNodes(input: input, multiplier: 811589153)
     for _ in 1...10 { mix(&nodes) }
     return "\([Int](1...3).reduce(0, { $0 + nodes.first(where: { $0.number == 0 })!.getNode(at: ($1*1000) % nodes.count).number } ))"
   }
