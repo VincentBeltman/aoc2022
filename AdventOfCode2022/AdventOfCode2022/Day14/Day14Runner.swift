@@ -73,7 +73,7 @@ class Day14Runner: Runable
       for i in 1..<line.count
       {
         let (firstCoord, SecondCoord) = (Coord(x: line[i-1][0], y: line[i-1][1]), Coord(x: line[i][0], y: line[i][1]))
-        field.setRange("#", atRange: StringField.CoordRange(start: firstCoord, end: SecondCoord))
+        field.setRange("#", atRange: CoordRange(start: firstCoord, end: SecondCoord))
       }
     }
     return field
@@ -87,7 +87,7 @@ class Day14Runner: Runable
   {
     let field: StringField = parseInput(input)
     let maxY: Int = field.max(by: { $0.y < $1.y })!.y
-    field.setRange("#", atRange: StringField.CoordRange(
+    field.setRange("#", atRange: CoordRange(
       start: Coord(x: 0, y: maxY+2),
       end: Coord(x: 1000, y: maxY+2)))
     return "\(dropAllSand(field: field, sandOriginCoord: Coord(x: 500, y: 0)))"

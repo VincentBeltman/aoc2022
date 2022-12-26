@@ -8,34 +8,25 @@
 import Foundation
 
 typealias StringField = Field<String>
+typealias CharField = Field<Character>
 typealias IntField = Field<Int>
 
 class Field<T: Comparable>: CustomStringConvertible
 {
-  class CoordRange
-  {
-    let start: Coord
-    let end: Coord
-
-    init(start: Coord, end: Coord)
-    {
-      self.start = start
-      self.end = end
-    }
-  }
-
   private var field: [[T]] = []
   let defaultValue: T
   private(set) var height: Int // For optimization purposes
   private(set) var width: Int // For optimization purposes
   private(set) var diagonalsEnabled: Bool
+  private(set) var includingSelfInNeighbours: Bool
 
-  init(defaultValue: T, enableDiagonals: Bool = false)
+  init(defaultValue: T, enableDiagonals: Bool = false, includingSelfInNeighbours: Bool = false)
   {
     self.defaultValue = defaultValue
     self.height = 0
     self.width = 0
     self.diagonalsEnabled = enableDiagonals
+    self.includingSelfInNeighbours = includingSelfInNeighbours
   }
 
   func resize(to coord: Coord)
@@ -107,11 +98,15 @@ class Field<T: Comparable>: CustomStringConvertible
 
   var description: String
   {
+    toString({ "\($0)" })
+  }
+  func toString(_ transform: (T) -> String) -> String
+  {
     return field.reduce(into: "")
     { (result: inout String, row: [T]) in
       result = row.reduce(into: result)
       { (result: inout String, cell: T) in
-        result.append("\(cell)")
+        result.append(transform(cell))
       } + "\n"
     }
   }
@@ -158,7 +153,7 @@ class Field<T: Comparable>: CustomStringConvertible
     }
   }
 
-  func getNeighbours(of coord: Coord, includingSelf: Bool = false) -> [Coord]
+  func getNeighbours(of coord: Coord) -> [Coord]
   {
     var neighbours: [Coord] = []
 
@@ -169,7 +164,7 @@ class Field<T: Comparable>: CustomStringConvertible
       neighbours.append(Coord(x: coord.x+1, y: coord.y-1))
 
       neighbours.append(Coord(x: coord.x-1, y: coord.y))
-      if includingSelf
+      if includingSelfInNeighbours
       {
         neighbours.append(Coord(x: coord.x, y: coord.y))
       }
@@ -183,7 +178,7 @@ class Field<T: Comparable>: CustomStringConvertible
     {
       neighbours.append(Coord(x: coord.x, y: coord.y-1))
       neighbours.append(Coord(x: coord.x-1, y: coord.y))
-      if includingSelf
+      if includingSelfInNeighbours
       {
         neighbours.append(Coord(x: coord.x, y: coord.y))
       }
@@ -194,9 +189,9 @@ class Field<T: Comparable>: CustomStringConvertible
     return neighbours
   }
 
-  func getNeighbours(of coord: Coord, includingSelf: Bool = false) -> [T]
+  func getNeighbours(of coord: Coord) -> [T]
   {
-    return getNeighbours(of: coord, includingSelf: includingSelf).compactMap()
+    return getNeighbours(of: coord).compactMap()
     { neighbour in
       return getValue(at: neighbour)
     }
@@ -307,9 +302,10 @@ extension Field
         { continue }
         guard visited[neighbour] == nil else
         { continue }
+        let nextDistance: Int = currentDistance.distance + 1
         guard isValidNeighbour(currentCoord, neighbour) else
         { continue}
-        toVisit[neighbour] = DijkstraDistance(distance: currentDistance.distance + 1, origin: currentCoord)
+        toVisit[neighbour] = DijkstraDistance(distance: nextDistance, origin: currentCoord)
         // TODO: Needed?
         if visited[neighbour] != nil
         {

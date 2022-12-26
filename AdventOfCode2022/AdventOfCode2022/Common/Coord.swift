@@ -33,6 +33,11 @@ struct Coord: Equatable, Hashable, CustomStringConvertible
     hasher.combine(y)
   }
 
+  func adding(_ coord: Coord) -> Coord
+  {
+    return Coord(x: x+coord.x, y: y+coord.y)
+  }
+
   static func == (lhs: Coord, rhs: Coord) -> Bool
   {
     return lhs.x == rhs.x && lhs.y == rhs.y
@@ -41,5 +46,17 @@ struct Coord: Equatable, Hashable, CustomStringConvertible
   static func != (lhs: Coord, rhs: Coord) -> Bool
   {
     return lhs.x != rhs.x || lhs.y != rhs.y
+  }
+}
+
+class CoordRange
+{
+  let start: Coord
+  let end: Coord
+
+  init(start: Coord, end: Coord)
+  {
+    self.start = start
+    self.end = end
   }
 }

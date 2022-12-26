@@ -11,6 +11,7 @@
 		1B2EF9A8294DC8660080F39A /* Coord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2EF9A7294DC8660080F39A /* Coord.swift */; };
 		1B50C8FC2937DF090044625D /* RunFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B881C352937D4E200C4A85A /* RunFactory.swift */; };
 		1B5E10D1293CAA03000AF9E7 /* Collection+CountWhere.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E10D0293CAA03000AF9E7 /* Collection+CountWhere.swift */; };
+		1B709F892954D698005DA134 /* LCM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B709F882954D698005DA134 /* LCM.swift */; };
 		1B881C112937D3C900C4A85A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B881C102937D3C900C4A85A /* main.swift */; };
 		1B881C382937D4EF00C4A85A /* Runable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B881C372937D4EF00C4A85A /* Runable.swift */; };
 		1B881C3A2937D54F00C4A85A /* Day1Runner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B881C392937D54F00C4A85A /* Day1Runner.swift */; };
@@ -60,6 +61,7 @@
 		1B2EF984294C3C500080F39A /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
 		1B2EF9A7294DC8660080F39A /* Coord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coord.swift; sourceTree = "<group>"; };
 		1B5E10D0293CAA03000AF9E7 /* Collection+CountWhere.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+CountWhere.swift"; sourceTree = "<group>"; };
+		1B709F882954D698005DA134 /* LCM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCM.swift; sourceTree = "<group>"; };
 		1B881C0D2937D3C900C4A85A /* AdventOfCode2022 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AdventOfCode2022; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B881C102937D3C900C4A85A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		1B881C352937D4E200C4A85A /* RunFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunFactory.swift; sourceTree = "<group>"; };
@@ -366,6 +368,7 @@
 				1B881C6D2937DAB500C4A85A /* Input.swift */,
 				1B881C372937D4EF00C4A85A /* Runable.swift */,
 				1B881C352937D4E200C4A85A /* RunFactory.swift */,
+				1B709F882954D698005DA134 /* LCM.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 				1B881C482937D7C400C4A85A /* Day8Runner.swift in Sources */,
 				1B881C522937D7D600C4A85A /* Day13Runner.swift in Sources */,
 				1B881C4C2937D7CB00C4A85A /* Day10Runner.swift in Sources */,
+				1B709F892954D698005DA134 /* LCM.swift in Sources */,
 				1B881C562937D7DD00C4A85A /* Day15Runner.swift in Sources */,
 				1B2EF9A8294DC8660080F39A /* Coord.swift in Sources */,
 				1B881C5A2937D7E400C4A85A /* Day17Runner.swift in Sources */,
